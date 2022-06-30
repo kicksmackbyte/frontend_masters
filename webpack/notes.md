@@ -85,6 +85,66 @@ package.json
 The Core Concepts
 =================
 
+Entry
+-----
+The first javascript file to load to "kick-off" your app.
+Webpack uses this as a starting pointo
+Tells webpack **WHAT** (files) to load for the browser; compliments the `Output` property
+
+    module.exports = {
+        entry: './browser.main.ts'
+    }
+
+Output
+------
+Tells webpack **WHERE** and **HOW** to distribute bundles (compilations). Works with `Entry`.
+
+    module.exports = {
+        output: {
+            path: './dist',
+            filename: './bundle.js'
+        }
+    }
+
+Loaders
+-------
+Tells webpack how to modify files before its added to dependency graph
+Tells webpack how to interpret and translate files. Transformed on a per-file basis before adding to the dependency graph.
+Loaders are also javascript modules (functions) that takes the source file, and returns it in a modified state.
+Loaders are applied (right -> left -> right again)
+Loaders can be chained
+
+Different rules:
+
+* test
+    - regex
+* use
+    - (Array|String|Function)
+* include
+    - RegExp[]
+* exclude
+    - RegExp[]
+* issuer
+    - (RegExp|String)[]
+* enforce
+    - "pre"|"post"
+
+    module: {
+        rules: [
+            {test: /\.ts\$/, use: 'ts-loader'},
+            {test: /\.js\$/, use: 'babel-loader'},
+            {test: /\.css\$/, use: 'css-loader'}
+        ]
+    }
+
+Plugins
+-------
+Objects (with an `apply` property)
+Allow you to hook into the entire compilation lifecycle
+webpack has a variety of built-in plugins
+Adds additional functionality to Compilations(optimized bundled modules).
+More powerful with more access to CompilerAPI.
+Does everything else you'd ever want in webpack.
 
 Using Plugins
 ================
