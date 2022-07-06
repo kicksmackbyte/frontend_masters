@@ -2,14 +2,14 @@
     "main": "./src/index.js",
     "scripts": {
         "webpack": "webpack",
+        "webpack-dev-server": "webpack-dev-server",
         "prod": "npm run webpack -- --env mode=production",
-        "dev": "npm run webpack -- --env mode=development --watch"
-    },
-    "dependencies": {
+        "dev": "npm run webpack-dev-server -- --env mode=development"
     },
     "devDependencies": {
         "html-webpack-plugin": "^5.5.0",
         "webpack": "^5.73.0",
-        "webpack-cli": "^4.10.0"
+        "webpack-cli": "^4.10.0",
+        "webpack-dev-server": "^4.9.3"
     }
 }
